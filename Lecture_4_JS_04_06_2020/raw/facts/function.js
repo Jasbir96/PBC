@@ -1,5 +1,5 @@
 // js=> 10days, java 
-function sayHello() {
+function sayHello(arg1,arg2) {
     // console.log("Hi " + toGreet);
     console.log(arguments);
 }
