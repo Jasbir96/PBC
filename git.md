@@ -10,6 +10,3 @@
 - [ ] create a repo on github
 - [ ] git remote add origin **Your Repo Name**
 - [ ] git push -u origin master
-- [ ] Finish my changes
-- [ ] Push my commits to GitHub
-- [ ] Open a pull request

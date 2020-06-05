@@ -1,0 +1,27 @@
+{
+  "name": "pbc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "request": "^2.88.2",
+    "uniqid": "^5.2.0"
+  },
+  "bin": {
+    "dirManager": "C:\\Users\\Mafia\\Desktop\\PBC\\Lecture_4_JS_04_06_2020\\activity\\organizer.js"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit  1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pep-DEV101/PBC.git"
+  },
+  "author": "Jasbir Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pep-DEV101/PBC/issues"
+  },
+  "homepage": "https://github.com/Pep-DEV101/PBC#readme"
+}
