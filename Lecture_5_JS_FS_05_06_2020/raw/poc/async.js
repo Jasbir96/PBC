@@ -3,10 +3,13 @@ console.log("Before");
 // async functions
 // you start the work but don't wait for completion=> ()
 fs.readFile("f1.txt", frcb);
+
+// cb => confirmationn => async work is completed
 function frcb(err, content) {
     console.log("Content " + content)
     console.log("Actual After");
 }
+
 console.log("After");
 console.log("I can do other things");
 console.log("````````````````");
