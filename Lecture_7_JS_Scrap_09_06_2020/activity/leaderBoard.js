@@ -21,7 +21,6 @@ function cb(err, response, html) {
         console.log(response.statusCode);
     }
 }
-
 function parseSeriesPage(html) {
     console.log("Parsing Html");
     let $ = cheerio.load(html);
@@ -41,13 +40,17 @@ function parseSeriesPage(html) {
             // console.log(matchLink);
             let fullLink = `https://www.espncricinfo.com${matchLink}`;
             // console.log(fullLink);
-            handleEachMatch(fullLink)
-
+            // request start 
+            handleEachMatch(fullLink);
         }
     }
+
+
 }
+
 // page Link => request => response => recieve=> parseMatch
 function handleEachMatch(matchLink) {
+    // async function
     request(matchLink, mcb);
     function mcb(err, response, html) {
         // consol
@@ -67,6 +70,8 @@ function handleEachMatch(matchLink) {
 //input=> matchPageHtml=>  get respective teamName,run,type,score of a player
 function parseMatch(html) {
     let $ = cheerio.load(html);
+    let type = $(".desc.text-truncate").text();
+    console.log(type);
     // scorecards
     let innings = $(".card.content-block.match-scorecard-table");
     innings = innings.slice(0, 2);
