@@ -67,7 +67,6 @@ function handleEachMatch(matchLink) {
             if (count == 0) {
                 console.table(leaderboard);
             }
-            
         } else if (response.statusCode == 404) {
             console.log("Page not found");
         } else {
@@ -75,6 +74,7 @@ function handleEachMatch(matchLink) {
             console.log(response.statusCode);
         }
     }
+    
 }
 //input=> matchPageHtml=>  get respective teamName,run,type,score of a player
 function parseMatch(html) {
