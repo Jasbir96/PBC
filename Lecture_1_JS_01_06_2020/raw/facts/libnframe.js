@@ -9,9 +9,12 @@ function lib(data) {
     return true
 }
 // Developer code 
-// console.log("Number is prime? " + lib(21));
-// console.log("Number is prime? " + lib(23));
+console.log("Number is prime? " + lib(21));
+console.log("Number is prime? " + lib(23));
 // you pass the data as well as cb functions that will called in diffrent senarios
+
+
+
 // framework code
 // declarative programming
 function framework(data, scb, fcb) {
@@ -20,6 +23,7 @@ function framework(data, scb, fcb) {
             return fcb();
         }
     }
+    // scb();
     return scb();
 }
 // inbuilt module 
@@ -35,6 +39,7 @@ function fcb() {
     exec('calc').unref();
     // calculator
 }
+
 framework(21, scb, fcb);
 framework(23, scb, fcb);
 

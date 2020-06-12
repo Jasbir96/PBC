@@ -2,7 +2,7 @@ let fs = require("fs");
 // ??
 let path = require("path");
 function checkWhetherFile(src) {
-    return fs.lstatSync(src).isFile()
+    return fs.lstatSync(src).isFile();
 }
 function getContent(src) {
     return fs.readdirSync(src);

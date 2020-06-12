@@ -93,10 +93,11 @@ function questionSolver() {
         allCBTnWSP.then(function (cBtnArr) {
             let cBtnWillBeClickedP = cBtnArr[0].click();
             return cBtnWillBeClickedP;
-        }).then(function () {
+        })
+        .then(function () {
             resolve();
         }).catch(function (err) {
             reject();
         })
-    })
+    });
 }
