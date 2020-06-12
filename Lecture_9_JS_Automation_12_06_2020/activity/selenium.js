@@ -13,7 +13,7 @@ let browser = new swd.Builder();
 let { email, password } = require("../../credentials.json");
 // tab=> tab
 let tab = browser.forBrowser("chrome").build();
-let gCodesElements;
+let gCodesElements, gcInputBox, gTextArea;
 let tabWillBeOpenedPromise = tab.get("https://www.hackerrank.com/auth/login?h_l=body_middle_left_button&h_r=login");
 tabWillBeOpenedPromise
     .then(function () {
@@ -181,21 +181,52 @@ function pasteCode(code) {
         let pTabWillBeSelectedP = tab.findElement(swd.By.css("li#Problem"));
         pTabWillBeSelectedP.then(function (pTab) {
             let pTwillBeClickedP = pTab.click();
-            console.log(2);
-            return pTwillBeClickedP
+            return pTwillBeClickedP;
         }).then(function () {
-            let tAreaP = tab.findElement(swd.By.css("textarea"));
-            console.log(2);
-            return tAreaP;
-        }).then(function (tArea) {
-            let CodeWillBeEP = tArea.sendKeys("abc");
-            // console.log(3);
-            return CodeWillBeEP;
+            let inputBoxWBeSP = tab.findElement(swd.By.css(".custom-input-checkbox"));
+            return inputBoxWBeSP;
+        }).then(function (inputBox) {
+            let inputbWillBeCP = inputBox.click();
+            return inputbWillBeCP;
         }).then(function () {
-            resolve();
-        }).catch(function (err) {
-            reject(err);
+            let cInputWillBeSelectedP = tab.findElement(swd.By.css(".custominput"));
+            return cInputWillBeSelectedP;
+        }).then(function (cInputBox) {
+            gcInputBox = cInputBox;
+            let codeWillBeEnteredP = cInputBox.sendKeys(code);
+            return codeWillBeEnteredP;
+        }).then(function () {
+            let ctrlAWillBeSendP = gcInputBox.sendKeys(swd.Key.CONTROL + "a");
+            return ctrlAWillBeSendP;
+        }).then(function () {
+            let ctrlXWillBeSendP = gcInputBox.sendKeys(swd.Key.CONTROL + "x");
+            return ctrlXWillBeSendP;
         })
+            .then(function () {
+                let tAreaP = tab.findElement(swd.By.css("textarea"));
+                console.log(2);
+                return tAreaP;
+            }).then(
+                function (tArea) {
+                gTextArea = tArea;
+                let CodeWillBeEP = tArea.sendKeys(swd.Key.CONTROL + "a");
+                // console.log(3);
+                return CodeWillBeEP;
+            }).then(function () {
+                let ctrlVWillBeSendP = gTextArea.sendKeys(swd.Key.CONTROL + "v");
+                return ctrlVWillBeSendP;
+            }).then(function () {
+                let submitCodeBtnWillBeS = tab.findElement(swd.By.css("button.hr-monaco-submit"));
+                return submitCodeBtnWillBeS;
+            }).then(function (submitBtn) {
+                let submitBtnWillBeClickedP = submitBtn.click();
+                return submitBtnWillBeClickedP;
+            })
+            .then(function () {
+                resolve();
+            }).catch(function (err) {
+                reject(err);
+            })
         // write the code 
         // submit the code 
     })
