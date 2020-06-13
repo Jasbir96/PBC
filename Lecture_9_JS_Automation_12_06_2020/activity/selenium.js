@@ -138,6 +138,7 @@ function handleLockBtn() {
 
     })
 }
+
 function copyCode() {
     return new Promise(function (resolve, reject) {
         // all name

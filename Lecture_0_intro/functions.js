@@ -3,11 +3,11 @@ function sayHi(message) {
     return 10;
 }
 
-// let rVal = sayHi("Steve");
+let rVal = sayHi("Steve");
 // sayHi("Rogers");
-// console.log(rVal);
+console.log(rVal);
 // Here you are accessing the address of the fn 
-// console.log(sayHi);
+console.log(sayHi);
 // here you are acessing the function and running it's code
 // console.log(sayHi("Steve"));
 
