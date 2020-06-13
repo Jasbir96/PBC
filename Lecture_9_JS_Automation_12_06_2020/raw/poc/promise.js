@@ -14,25 +14,25 @@ function fsprf(path) {
                     resolve(content);
                 }
             });
-
         }
     );
 }
 // pending 
 let f1WillBeReadPromise = fsprf("f1.txt");
 console.log(f1WillBeReadPromise);
+
 let thenKaPromise = f1WillBeReadPromise.then(scb);
 f1WillBeReadPromise.catch(fcb);
+
 // pending promise
+
 console.log(thenKaPromise);
 console.log("```````````````````````````````````")
-
 function scb(data) {
     console.log("scb has ran");
     console.log("" + data);
     return 1000;
 }
-
 function fcb(err) {
     console.log("Inside fcb");
     console.log(err);
