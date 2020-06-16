@@ -5,7 +5,13 @@ let { email, password } = require("../../credentials.json");
 // tab=> tab
 let tab = browser.forBrowser("chrome").build();
 (async function () {
+    await login();
+    console.log("User logged In");
+})()
+// login
+async function login() {
     try {
+
         await tab.get("https://www.hackerrank.com/auth/login?h_l=body_middle_left_button&h_r=login");
         await tab.manage().setTimeouts({
             implicit: 10000
@@ -23,4 +29,9 @@ let tab = browser.forBrowser("chrome").build();
     } catch (err) {
         console.log(err);
     }
-})()
+}
+// go to admin panel
+// manage challenges
+// create challenges
+// fill the entries
+// submit 
