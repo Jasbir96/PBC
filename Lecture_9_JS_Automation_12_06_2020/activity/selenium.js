@@ -76,9 +76,7 @@ tabWillBeOpenedPromise
         // selenium
         let allQtag = tab.findElements(swd.By.css("a.js-track-click.challenge-list-item"));
         return allQtag
-
     }).then(function (alQues) {
-
         let allQLinkP = alQues.map(function (anchor) {
             return anchor.getAttribute("href");
         })
@@ -86,6 +84,7 @@ tabWillBeOpenedPromise
         return allLinkPromise;
     }).then(function (allQLink) {
         // serial execution of all the promises
+        // ??
         let f1Promise = questionSolver(allQLink[0]);
         for (let i = 1; i < allQLink.length; i++) {
             f1Promise = f1Promise.then(function () {
@@ -94,7 +93,7 @@ tabWillBeOpenedPromise
         }
         let lstQuestWillBeSolvedP = f1Promise;
         return lstQuestWillBeSolvedP;
-    }).then(function(){
+    }).then(function () {
         console.log("All questions");
     })
     .catch(function (err) {
@@ -131,6 +130,7 @@ function questionSolver(url) {
             })
     });
 }
+
 function handleLockBtn() {
     return new Promise(function (resolve, reject) {
         let lockBtnWillBeFP = tab.findElement(swd.By.css(".editorial-content-locked button.ui-btn.ui-btn-normal"));
