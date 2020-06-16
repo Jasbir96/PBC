@@ -16,7 +16,6 @@ function fsprf(path) {
         })
     });
 }
-
 //  a async fs.readfile
 // 1. return promise
 // 2. doesn't require cb

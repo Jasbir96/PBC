@@ -12,8 +12,10 @@ let uniqid = require("uniqid");
 function untreefy(src, dest, obj) {
     // checkwhether file or directory
     if (checkWhetherFile(src) == true) {
+        
         // console.log(toprint + " *");
         // copy with newname
+        
         let oldName = path.basename(src);
         let newName = uniqid();
         obj.newName = newName;
@@ -40,12 +42,12 @@ function untreefy(src, dest, obj) {
         }
     }
 }
+
 let src = process.argv[2];
 let dest = process.argv[3];
 let root = {};
 untreefy(src, dest, root);
 console.log(root);
-
 // console.log(src);
 // viewAsFlatFiles(src, path.basename(src));
 // viewAsTree(src, "");

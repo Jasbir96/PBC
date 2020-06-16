@@ -74,27 +74,37 @@ tabWillBeOpenedPromise
     }).then(function () {
         // console.log("Reached warm challenges page")
         // selenium
-        let urlofQP = tab.getCurrentUrl();
-        return urlofQP;
+        let allQtag = tab.findElements(swd.By.css("a.js-track-click.challenge-list-item"));
+        return allQtag
 
-    }).then(function (urlofQP) {
-        let questionWillBeSolvedPromise = questionSolver();
-        return questionWillBeSolvedPromise;
-    }).then(function () {
-        console.log("First Question solved");
+    }).then(function (alQues) {
+
+        let allQLinkP = alQues.map(function (anchor) {
+            return anchor.getAttribute("href");
+        })
+        let allLinkPromise = Promise.all(allQLinkP);
+        return allLinkPromise;
+    }).then(function (allQLink) {
+        // serial execution of all the promises
+        let f1Promise = questionSolver(allQLink[0]);
+        for (let i = 1; i < allQLink.length; i++) {
+            f1Promise = f1Promise.then(function () {
+                return questionSolver(allQLink[i])
+            })
+        }
+        let lstQuestWillBeSolvedP = f1Promise;
+        return lstQuestWillBeSolvedP;
+    }).then(function(){
+        console.log("All questions");
     })
     .catch(function (err) {
         console.log(err);
     })
-function questionSolver() {
-
+function questionSolver(url) {
     return new Promise(function (resolve, reject) {
         // logic to solve a question
-        let allCBTnWSP = tab.findElements(swd.By.css(".challenge-submit-btn"));
-        allCBTnWSP.then(function (cBtnArr) {
-            let cBtnWillBeClickedP = cBtnArr[0].click();
-            return cBtnWillBeClickedP;
-        }).then(function () {
+        let qPageWillBeOpenedP = tab.get(url);
+        qPageWillBeOpenedP.then(function () {
             let editorialWillBeSelectdPromise =
                 tab.findElement(swd.By.css("a[data-attr2='Editorial']"));
             return editorialWillBeSelectdPromise;
@@ -121,13 +131,13 @@ function questionSolver() {
             })
     });
 }
-
 function handleLockBtn() {
     return new Promise(function (resolve, reject) {
         let lockBtnWillBeFP = tab.findElement(swd.By.css(".editorial-content-locked button.ui-btn.ui-btn-normal"));
         lockBtnWillBeFP
             .then(function (lockBtn) {
                 let lBtnWillBeCP = lockBtn.click();
+                console.log("inside click");
                 return lBtnWillBeCP;
             }).then(function () {
                 resolve();
@@ -138,7 +148,6 @@ function handleLockBtn() {
 
     })
 }
-
 function copyCode() {
     return new Promise(function (resolve, reject) {
         // all name
@@ -167,7 +176,7 @@ function copyCode() {
                 }
                 return codeOfCP;
             }).then(function (code) {
-                console.log(code)
+                // console.log(code)
                 resolve(code);
                 console.log("resolved was called");
             }).catch(function (err) {
@@ -175,7 +184,6 @@ function copyCode() {
             })
     });
 }
-
 function pasteCode(code) {
     return new Promise(function (resolve, reject) {
         // click on problem tab
@@ -209,20 +217,20 @@ function pasteCode(code) {
                 return tAreaP;
             }).then(
                 function (tArea) {
-                gTextArea = tArea;
-                let CodeWillBeEP = tArea.sendKeys(swd.Key.CONTROL + "a");
-                // console.log(3);
-                return CodeWillBeEP;
-            }).then(function () {
-                let ctrlVWillBeSendP = gTextArea.sendKeys(swd.Key.CONTROL + "v");
-                return ctrlVWillBeSendP;
-            }).then(function () {
-                let submitCodeBtnWillBeS = tab.findElement(swd.By.css("button.hr-monaco-submit"));
-                return submitCodeBtnWillBeS;
-            }).then(function (submitBtn) {
-                let submitBtnWillBeClickedP = submitBtn.click();
-                return submitBtnWillBeClickedP;
-            })
+                    gTextArea = tArea;
+                    let CodeWillBeEP = tArea.sendKeys(swd.Key.CONTROL + "a");
+                    // console.log(3);
+                    return CodeWillBeEP;
+                }).then(function () {
+                    let ctrlVWillBeSendP = gTextArea.sendKeys(swd.Key.CONTROL + "v");
+                    return ctrlVWillBeSendP;
+                }).then(function () {
+                    let submitCodeBtnWillBeS = tab.findElement(swd.By.css("button.hr-monaco-submit"));
+                    return submitCodeBtnWillBeS;
+                }).then(function (submitBtn) {
+                    let submitBtnWillBeClickedP = submitBtn.click();
+                    return submitBtnWillBeClickedP;
+                })
             .then(function () {
                 resolve();
             }).catch(function (err) {

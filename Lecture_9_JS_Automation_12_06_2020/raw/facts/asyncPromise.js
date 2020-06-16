@@ -11,5 +11,6 @@ readFilePromise.then(function (data) {
 readFilePromise.catch(function (err) {
     console.log("Inside catch");
     console.log(err);
-})
+});
+
 console.log("After");
