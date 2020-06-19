@@ -85,7 +85,6 @@ async function createChallenge(challenge) {
 // create challenges
 // fill the entries
 // submit 
-
 async function sendData(parentId, element, data) {
     // Selenium => browser =>? JS Execute
     await tab.executeScript(`document.querySelector('${parentId} .CodeMirror.cm-s-default.CodeMirror-wrap div').style.height='10px'`);

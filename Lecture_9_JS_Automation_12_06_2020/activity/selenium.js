@@ -21,15 +21,16 @@ tabWillBeOpenedPromise
         let findTimeOutP = tab.manage().setTimeouts({
             implicit: 10000
         });
-        return findTimeOutP;
+        let maximizeScreen = tab.manage().window().maximize();
+        return Promise.all([findTimeOutP, maximizeScreen]);
     })
     .then(function () {
-        // console.log("Home page opened");
-        // to find an element
-        let inputBoxPromise = tab.findElement(swd.By.css("#input-1"));
-        let passwordBoxPromise = tab.findElement(swd.By.css("#input-2"));
-        return Promise.all([inputBoxPromise, passwordBoxPromise]);
-    })
+            // console.log("Home page opened");
+            // to find an element
+            let inputBoxPromise = tab.findElement(swd.By.css("#input-1"));
+            let passwordBoxPromise = tab.findElement(swd.By.css("#input-2"));
+            return Promise.all([inputBoxPromise, passwordBoxPromise]);
+        })
     .then(function (BeArr) {
         // enter data 
         let inputBox = BeArr[0];
@@ -57,7 +58,7 @@ tabWillBeOpenedPromise
     }).then(function () {
         // go to interview prep
         let IpBtnWillBeFoundP =
-            tab.findElement(swd.By.css("h3[title='Interview Preparation Kit']"));
+            tab.findElement(swd.By.css("#base-card-1-link"));
         return IpBtnWillBeFoundP;
         // data-analytics="InterviewPromotionCard"
         // console.log("Login Done")
