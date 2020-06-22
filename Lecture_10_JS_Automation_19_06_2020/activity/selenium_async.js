@@ -12,16 +12,18 @@ let qs = require("./questions");
     // ***************************DashBoard Area********************************************
     // => 10seconds => 10seconds => find
     // to load home page 
-    await tab.findElement(swd.By.css("a[data-analytics='NavBarProfileDropDown']"));
+    let navBar = await tab.findElement(swd.By.css("a[data-analytics='NavBarProfileDropDown']"));
+    await tab.wait(swd.until.elementIsVisible(navBar));
+   await navBar.click();
+    let manageChallenges = await (await tab).findElement(swd.By.css("a[data-analytics='NavBarProfileDropDownAdministration']"))
+    await tab.wait(swd.until.elementIsVisible(manageChallenges));
+   await manageChallenges.click();
     // manage challenges
-    await tab.get("https://www.hackerrank.com/administration/contests");
-
+    // await tab.get("https://www.hackerrank.com/administration/contests");
     await waitForLoader(); // => incase of any frontend framework 
     let manageTabs = await tab.findElements(swd.By.css(".administration ul li a"));
     await manageTabs[1].click();
-
     let challengePageLink = await tab.getCurrentUrl();
-    
     for (let i = 0; i < qs.length; i++) {
         await (await tab).get(challengePageLink);
         await waitForLoader();
@@ -63,7 +65,7 @@ async function createChallenge(challenge) {
     let cnBox = await tab.findElement(swd.By.css("#constraints-container .CodeMirror.cm-s-default.CodeMirror-wrap textarea"));
     let ofBox = await tab.findElement(swd.By.css("#output_format-container .CodeMirror.cm-s-default.CodeMirror-wrap textarea"));
     let tags = await tab.findElement(swd.By.css(".tagsinput input"));
-// parallely 
+    // parallely 
     await chBox.sendKeys(challenge["Challenge Name"]);
     await DescBox.sendKeys(challenge["Description"]);
     await sendData("#problem_statement-container", psBox, challenge["Problem Statement"]);
@@ -90,6 +92,7 @@ async function sendData(parentId, element, data) {
     await tab.executeScript(`document.querySelector('${parentId} .CodeMirror.cm-s-default.CodeMirror-wrap div').style.height='10px'`);
     await element.sendKeys(data);
 }
+
 // -> hidden 
 async function waitForLoader() {
     let loader = await tab.findElement(swd.By.css("#ajax-msg"));
