@@ -68,4 +68,5 @@ async function handleSinglePage(page, browser) {
 async function solveSingleQs(newTab, link) {
     await newTab.goto(link, { waitUntil: "networkidle0" });
     // add a user as a moderator
+    // close 
 }
