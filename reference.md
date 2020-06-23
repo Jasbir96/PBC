@@ -31,3 +31,17 @@
 ### Selenium
   * https://www.selenium.dev/documentation/en/
   * https://www.selenium.dev/selenium/docs/api/javascript/index.html
+### Puppeteer  
+  * https://flaviocopes.com/puppeteer/
+	* https://nitayneeman.com/posts/getting-to-know-puppeteer-using-practical-examples/
+  * https://peter.sh/experiments/chromium-command-line-switches/
+ ##### **Official**
+  * https://pptr.dev
+  * https://github.com/puppeteer/puppeteer/blob/master/docs/api.md
+ ##### **Examples**
+  * https://github.com/checkly/puppeteer-examples
+  * https://github.com/sarfraznawaz2005/whatspup
+### Event Loop
+  * https://www.youtube.com/watch?v=u1kqx6AenYw
+   * https://nodesource.com/blog/understanding-the-nodejs-event-loop/
+  * https://www.youtube.com/watch?v=u1kqx6AenYw

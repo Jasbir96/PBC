@@ -32,7 +32,6 @@ let { email, password } = require("../../credentials.json");
     await page.goto("https://www.hackerrank.com/administration/challenges", { waitUntil: "networkidle0" });
     await handleSinglePage(page, browser);
 })();
-
 async function handleSinglePage(page, browser) {
     await page.waitForSelector("a.backbone.block-center");
     // findelement=> $
@@ -59,10 +58,8 @@ async function handleSinglePage(page, browser) {
         let p = solveSingleQs(newTab, `https://www.hackerrank.com${allHref[i]}`);
         paralleltaskP.push(p);
     }
-
     await Promise.all(paralleltaskP);
-
-    // next page is available=> repea 
+    // next page is available=> repeat
     // return 
 }
 async function solveSingleQs(newTab, link) {
