@@ -1,0 +1,35 @@
+/* reset syntax */
+html,body{
+    margin:0px;
+    padding: 0px;
+}
+/* universal selector */
+*{
+box-sizing: border-box;
+}
+.menu{
+    height: 20px;
+}
+.menu-options{
+    height: 68px;
+    border: 1px gray solid;
+}
+
+.formulaBar{
+    
+    height: 20px;
+    border: 2px solid yellow;
+
+}
+.cell-container{
+    height: calc(100vh - 128px);
+    /* background-color: green; */
+
+}
+.sheets{   
+    height: 20px;
+    border: 2px pink solid;
+}
+.col{
+    border:1px teal solid;
+}

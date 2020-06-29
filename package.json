@@ -2,7 +2,7 @@
   "name": "pbc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./Lecture_12_elect_ex_29_06_2020/activity/main.js",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "chromedriver": "^83.0.0",
@@ -15,7 +15,9 @@
   "bin": {
     "dirManager": "C:\\Users\\Mafia\\Desktop\\PBC\\Lecture_4_JS_04_06_2020\\activity\\organizer.js"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron": "^9.0.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit  1"
   },
