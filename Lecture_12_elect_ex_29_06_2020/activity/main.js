@@ -4,10 +4,10 @@ const app = electron.app;
 const ejs = require("ejs-electron");
 // npm install ejs-electron --save-dev 
 ejs.data({
-    'title': "My Excel-1",
+    'title': "My Excel-2",
     "rows": 100,
     'cols': 26
-})
+});
 function createWindow() {
     const win = new electron.BrowserWindow({
         width: 800,

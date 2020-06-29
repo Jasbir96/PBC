@@ -24,12 +24,19 @@ box-sizing: border-box;
 .cell-container{
     height: calc(100vh - 128px);
     /* background-color: green; */
-
+overflow: auto;
 }
 .sheets{   
     height: 20px;
     border: 2px pink solid;
 }
+.row{
+    display: flex;
+}
 .col{
     border:1px teal solid;
+    min-width: 75px;
+    height: 23px;
+    /* width: 75px; */
+    /* height: 23px; */
 }

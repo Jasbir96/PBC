@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title><%=title%></title>
-    
 </head>
-
 <body>
     <!-- .menu+.menu-options+(.formulaBar>(input[type="text"])*2) 
         +.cell-container+.sheets -->
@@ -21,9 +18,9 @@
         <%for(let i=1;i<=rows;i++){ %>
         <div class="row">
             <%for(let j=0;j<cols;j++){%>
-            <span class="col"> 
-                <%=""+i + String.fromCharCode(65+j)%>
-            </span>
+            <div class="col" contenteditable="true"> 
+                <%=''+i +'-'+ String.fromCharCode(65+j)%>
+            </div>
         <%}%>
             </div>
             <%}%>
