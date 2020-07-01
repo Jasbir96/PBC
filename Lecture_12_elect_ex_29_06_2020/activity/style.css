@@ -49,6 +49,13 @@ position: relative;
     left: 25px;
     top: 0px;
 }
+
+#grid{
+    text-align: center;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+}
 #left-col{
     position: absolute;
     top: 25px;
@@ -73,6 +80,11 @@ position: relative;
     /* height: 23px; */
 }
 
+.cell {
+    border: 1px solid black;
+    width: 75px;
+    height: 25px;
+}
 
 
 

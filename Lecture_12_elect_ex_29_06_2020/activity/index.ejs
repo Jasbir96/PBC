@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./index.js"></script>
     <link rel="stylesheet" href="style.css">
     <title><%=title%></title>
 </head>
@@ -14,8 +15,8 @@
     <div class="menu">Menu</div>
     <div class="menu-options">Menu Options</div>
     <div class="formulaBar">
-        <input type="text" class="text-container ib">
-        <input type="text" class="formula-container "></div>
+        <input type="text" id="text-input" class="text-container ib">
+        <input type="text" id="formula-input" class="formula-container "></div>
     <div class="cell-container">
         <div id="top-left-cell"></div>
         <div id="top-row">
@@ -32,7 +33,15 @@
             </div>
             <%}%>
         </div>
-        <div id="grid"></div>
+        <div id="grid">
+            <% for(let i=0;i<rows;i++) { %>
+                <div class = "row">
+                    <% for(let j=0;j<cols;j++){ %>
+                        <div class = "cell" contenteditable="true" row-id=<%=i%> col-id=<%=j%>></div>
+                        <%}%>
+                </div>
+                <% } %>
+        </div>
     </div>
     <div class="sheets">
 
