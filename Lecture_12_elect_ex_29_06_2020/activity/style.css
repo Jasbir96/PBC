@@ -10,16 +10,15 @@ box-sizing: border-box;
 .menu{
     height: 20px;
 }
+
 .menu-options{
     height: 68px;
     border: 1px gray solid;
 }
 
 .formulaBar{
-    
     height: 20px;
     border: 2px solid yellow;
-
 }
 .cell-container{
     height: calc(100vh - 128px);

@@ -8,6 +8,7 @@ ejs.data({
     "rows": 100,
     'cols': 26
 });
+
 function createWindow() {
     const win = new electron.BrowserWindow({
         width: 800,
