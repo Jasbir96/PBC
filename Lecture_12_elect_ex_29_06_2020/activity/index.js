@@ -50,6 +50,8 @@ $(document).ready(function(){
 
     function evaluate(cell){
 
+        // 
+
     }
 
     function setFormula(cellObject, formula){
