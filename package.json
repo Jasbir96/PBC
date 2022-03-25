@@ -16,7 +16,7 @@
     "dirManager": "C:\\Users\\Mafia\\Desktop\\PBC\\Lecture_4_JS_04_06_2020\\activity\\organizer.js"
   },
   "devDependencies": {
-    "electron": "^9.0.5"
+    "electron": "^13.6.6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit  1"
